@@ -1,0 +1,214 @@
+# See: https://arduino.github.io/arduino-cli/latest/platform-specification/
+
+menu.pnum=Board part number
+
+menu.xserial=U(S)ART support
+menu.usb=USB support (if available)
+menu.xusb=USB speed (if available)
+menu.virtio=Virtual serial support
+
+menu.opt=Optimize
+menu.dbg=Debug symbols and core logs
+menu.rtlib=C Runtime Library
+menu.upload_method=Upload method
+
+################################################################################
+# Serialx activation
+maya1.menu.xserial.generic=Enabled (generic 'Serial')
+maya1.menu.xserial.none=Enabled (no generic 'Serial')
+maya1.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+maya1.menu.xserial.disabled=Disabled (no Serial support)
+maya1.menu.xserial.disabled.build.xSerial=
+
+GenL4.menu.xserial.generic=Enabled (generic 'Serial')
+GenL4.menu.xserial.none=Enabled (no generic 'Serial')
+GenL4.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+GenL4.menu.xserial.disabled=Disabled (no Serial support)
+GenL4.menu.xserial.disabled.build.xSerial=
+
+################################################################################
+# USB connectivity
+
+maya1.menu.usb.none=None
+maya1.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+maya1.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+maya1.menu.usb.CDC=CDC (no generic 'Serial')
+maya1.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+maya1.menu.usb.HID=HID (keyboard and mouse)
+maya1.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+maya1.menu.xusb.FS=Low/Full Speed
+maya1.menu.xusb.HS=High Speed
+maya1.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+maya1.menu.xusb.HSFS=High Speed in Full Speed mode
+maya1.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+
+GenL4.menu.usb.none=None
+GenL4.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+GenL4.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+GenL4.menu.usb.CDC=CDC (no generic 'Serial')
+GenL4.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+GenL4.menu.usb.HID=HID (keyboard and mouse)
+GenL4.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+GenL4.menu.xusb.FS=Low/Full Speed
+GenL4.menu.xusb.HS=High Speed
+GenL4.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+GenL4.menu.xusb.HSFS=High Speed in Full Speed mode
+GenL4.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+################################################################################
+# Optimizations
+
+maya1.menu.opt.osstd=Smallest (-Os default)
+maya1.menu.opt.oslto=Smallest (-Os) with LTO
+maya1.menu.opt.oslto.build.flags.optimize=-Os -flto
+maya1.menu.opt.o1std=Fast (-O1)
+maya1.menu.opt.o1std.build.flags.optimize=-O1
+maya1.menu.opt.o1lto=Fast (-O1) with LTO
+maya1.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+maya1.menu.opt.o2std=Faster (-O2)
+maya1.menu.opt.o2std.build.flags.optimize=-O2
+maya1.menu.opt.o2lto=Faster (-O2) with LTO
+maya1.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+maya1.menu.opt.o3std=Fastest (-O3)
+maya1.menu.opt.o3std.build.flags.optimize=-O3
+maya1.menu.opt.o3lto=Fastest (-O3) with LTO
+maya1.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+maya1.menu.opt.ogstd=Debug (-Og)
+maya1.menu.opt.ogstd.build.flags.optimize=-Og
+maya1.menu.opt.o0std=No Optimization (-O0)
+maya1.menu.opt.o0std.build.flags.optimize=-O0
+
+GenL4.menu.opt.osstd=Smallest (-Os default)
+GenL4.menu.opt.oslto=Smallest (-Os) with LTO
+GenL4.menu.opt.oslto.build.flags.optimize=-Os -flto
+GenL4.menu.opt.o1std=Fast (-O1)
+GenL4.menu.opt.o1std.build.flags.optimize=-O1
+GenL4.menu.opt.o1lto=Fast (-O1) with LTO
+GenL4.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+GenL4.menu.opt.o2std=Faster (-O2)
+GenL4.menu.opt.o2std.build.flags.optimize=-O2
+GenL4.menu.opt.o2lto=Faster (-O2) with LTO
+GenL4.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+GenL4.menu.opt.o3std=Fastest (-O3)
+GenL4.menu.opt.o3std.build.flags.optimize=-O3
+GenL4.menu.opt.o3lto=Fastest (-O3) with LTO
+GenL4.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+GenL4.menu.opt.ogstd=Debug (-Og)
+GenL4.menu.opt.ogstd.build.flags.optimize=-Og
+GenL4.menu.opt.o0std=No Optimization (-O0)
+GenL4.menu.opt.o0std.build.flags.optimize=-O0
+
+################################################################################
+# Debug information
+
+maya1.menu.dbg.none=None
+maya1.menu.dbg.enable_sym=Symbols Enabled (-g)
+maya1.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+maya1.menu.dbg.enable_log=Core logs Enabled
+maya1.menu.dbg.enable_log.build.flags.debug=
+maya1.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+maya1.menu.dbg.enable_all.build.flags.debug=-g
+
+GenL4.menu.dbg.none=None
+GenL4.menu.dbg.enable_sym=Symbols Enabled (-g)
+GenL4.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+GenL4.menu.dbg.enable_log=Core logs Enabled
+GenL4.menu.dbg.enable_log.build.flags.debug=
+GenL4.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+GenL4.menu.dbg.enable_all.build.flags.debug=-g
+
+################################################################################
+# C Runtime Library
+
+maya1.menu.rtlib.nano=Newlib Nano (default)
+maya1.menu.rtlib.nanofp=Newlib Nano + Float Printf
+maya1.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+maya1.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+maya1.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+maya1.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+maya1.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+maya1.menu.rtlib.full=Newlib Standard
+maya1.menu.rtlib.full.build.flags.ldspecs=
+
+GenL4.menu.rtlib.nano=Newlib Nano (default)
+GenL4.menu.rtlib.nanofp=Newlib Nano + Float Printf
+GenL4.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+GenL4.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+GenL4.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+GenL4.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+GenL4.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+GenL4.menu.rtlib.full=Newlib Standard
+GenL4.menu.rtlib.full.build.flags.ldspecs=
+
+
+################################################################################
+# Kirmayer Boards 
+
+maya1.name= Maya-1(STM32F4 Generic)
+
+maya1.build.core=arduino
+maya1.build.board=GenF4
+maya1.build.st_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} {build.bootloader_flags}
+maya1.build.mcu=cortex-m4
+maya1.build.fpu=-mfpu=fpv4-sp-d16
+maya1.build.float-abi=-mfloat-abi=hard
+maya1.build.series=STM32F4xx
+maya1.build.flash_offset=0x0
+maya1.upload.maximum_size=0
+maya1.upload.maximum_data_size=0
+maya1.openocd.target=stm32f4x
+maya1.vid.0=0x0483
+maya1.pid.0=0x5740
+
+# Black F407VG
+# https://github.com/mcauser/BLACK_F407VEZ with bigger chip
+maya1.menu.pnum.MAYA_1=MAYA_1
+maya1.menu.pnum.MAYA_1.upload.maximum_size=1048576
+maya1.menu.pnum.MAYA_1.upload.maximum_data_size=131072
+maya1.menu.pnum.MAYA_1.build.board=MAYA_1
+maya1.menu.pnum.MAYA_1.build.product_line=STM32F407xx
+maya1.menu.pnum.MAYA_1.build.variant_h=variant_MAYA_1.h
+maya1.menu.pnum.MAYA_1.build.variant=Maya1/MAYA
+maya1.menu.pnum.MAYA_1.build.peripheral_pins=-DCUSTOM_PERIPHERAL_PINS
+maya1.menu.pnum.MAYA_1.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32F4xx/STM32F407.svd
+
+# Upload menu
+maya1.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+maya1.menu.upload_method.swdMethod.upload.protocol=swd
+maya1.menu.upload_method.swdMethod.upload.options=
+maya1.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+maya1.menu.upload_method.jlinkMethod=STM32CubeProgrammer (J-Link)
+maya1.menu.upload_method.jlinkMethod.upload.protocol=jlink
+maya1.menu.upload_method.jlinkMethod.upload.options=
+maya1.menu.upload_method.jlinkMethod.upload.tool=stm32CubeProg
+
+maya1.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+maya1.menu.upload_method.serialMethod.upload.protocol=serial
+maya1.menu.upload_method.serialMethod.upload.options=-c {serial.port.file}
+maya1.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+maya1.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+maya1.menu.upload_method.dfuMethod.upload.protocol=dfu
+maya1.menu.upload_method.dfuMethod.upload.options=-v {upload.vid} -p {upload.pid}
+maya1.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+maya1.menu.upload_method.bmpMethod=BMP (Black Magic Probe)
+maya1.menu.upload_method.bmpMethod.upload.protocol=gdb_bmp
+maya1.menu.upload_method.bmpMethod.upload.tool=bmp_upload
+
+maya1.menu.upload_method.hidMethod=HID Bootloader 2.2
+maya1.menu.upload_method.hidMethod.upload.protocol=hid22
+maya1.menu.upload_method.hidMethod.upload.tool=hid_upload
+maya1.menu.upload_method.hidMethod.build.flash_offset=0x4000
+maya1.menu.upload_method.hidMethod.build.bootloader_flags=-DBL_HID
+
+maya1.menu.upload_method.OpenOCDSTLink=OpenOCD STLink (SWD)
+maya1.menu.upload_method.OpenOCDSTLink.upload.protocol=stlink
+maya1.menu.upload_method.OpenOCDSTLink.upload.tool=openocd_upload
+
+maya1.menu.upload_method.OpenOCDDapLink=OpenOCD DapLink (SWD)
+maya1.menu.upload_method.OpenOCDDapLink.upload.protocol=cmsis-dap
+maya1.menu.upload_method.OpenOCDDapLink.upload.tool=openocd_upload
+

@@ -1,0 +1,9 @@
+# Maya 1
+maya1.menu.pnum.GENERIC_F407VGTX=Generic F407VGTx
+maya1.menu.pnum.GENERIC_F407VGTX.upload.maximum_size=1048576
+maya1.menu.pnum.GENERIC_F407VGTX.upload.maximum_data_size=131072
+maya1.menu.pnum.GENERIC_F407VGTX.build.board=GENERIC_F407VGTX
+maya1.menu.pnum.GENERIC_F407VGTX.build.product_line=STM32F407xx
+maya1.menu.pnum.GENERIC_F407VGTX.build.variant=STM32F4xx/F407V(E-G)T_F417V(E-G)T
+maya1.menu.pnum.GENERIC_F407VGTX.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32F4xx/STM32F407.svd
+
