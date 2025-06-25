@@ -10,7 +10,7 @@
       },
       "platforms": [
         {
-          "name": "STM32 MCU based Maya boards",
+          "name": "Maya1",
           "architecture": "stm32",
           "version": "1.0.0",
           "category": "Contributed",
